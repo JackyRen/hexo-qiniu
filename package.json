@@ -1,6 +1,6 @@
 {
     "name":"hexo-qiniu",
-    "version": "0.0.1",
+    "version": "0.l.0",
     "description": "Use Qiniu links in your blog posts! :)",
     "main": "./bin/index",
     "repository":{
