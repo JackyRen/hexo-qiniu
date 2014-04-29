@@ -51,16 +51,16 @@ Will generate the following HTML:
 <img class="qiniu nofancybox custom_class1 custom_class2" src="http://git-repo.qiniudn.com/images/test.jpg-small">
 ```
 
-here are some examples
-```
-{% qiniu-img test.jpg big custom_class1,custom_class2 %}
-```
-![](http://git-repo.qiniudn.com/images/test.jpg-big)
-
-```
-{% qiniu-img test.jpg small custom_class1,custom_class2 %}
-```
-![](http://git-repo.qiniudn.com/images/test.jpg-small)
+##Examples
+  ```
+  {% qiniu-img test.jpg big %}
+  ```
+  ![](http://git-repo.qiniudn.com/images/test.jpg-big)
+  
+  ```
+  {% qiniu-img test.jpg small %}
+  ```
+  ![](http://git-repo.qiniudn.com/images/test.jpg-small)
 
 
 ##TODO
