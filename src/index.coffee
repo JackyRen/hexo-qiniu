@@ -6,7 +6,7 @@ root_path = hexo.config.root
 qiniu_config = hexo.config.qiniu || false
 qiniu_bucket = qiniu_config.bucket || false
 qiniu_style_seperator = qiniu_config.style_seperator || '-'
-qiniu_prefix = "#{qiniu_bucket}.qiniudn.com"
+qiniu_prefix = "http://#{qiniu_bucket}.qiniudn.com/"
 qiniu_default_key_prefix = qiniu_config.default_key_prefix || false
 
 
@@ -55,7 +55,7 @@ hexo.extend.console.register 'qiniu', package_info.description,qiniu_command_opt
 """
 hexo.extend.tag.register 'qiniu-img', (args, content)->
     file_path = args[0]
-    stype_name = args[1] || false
+    style_name = args[1] || false
     classes = args[2] || ""
     imgAttr = {}
 
@@ -72,13 +72,12 @@ hexo.extend.tag.register 'qiniu-img', (args, content)->
     classes.push('qiniu')
     classes.push('nofancybox')
 
-    imgAttr.src = "#{qiniu_default_key_prefix.image}#{qiniu_prefix}/#{file_path}"
-    if stylename
-      imgAttr.src = "#{imgAttr.src}#{qiniu_style_seperator}#{stylename}"
-    console.log(imgAttr.src)
+    imgAttr.src = "#{qiniu_prefix}#{qiniu_default_key_prefix.image}#{file_path}"
+    if style_name
+      imgAttr.src = "#{imgAttr.src}#{qiniu_style_seperator}#{style_name}"
     imgAttr.class = classes.join(' ')
 
-    return htmlTag('img', imgAttr)
+    return html_tag('img', imgAttr)
 
 
 

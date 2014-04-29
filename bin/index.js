@@ -17,7 +17,7 @@ qiniu_bucket = qiniu_config.bucket || false;
 
 qiniu_style_seperator = qiniu_config.style_seperator || '-';
 
-qiniu_prefix = "" + qiniu_bucket + ".qiniudn.com";
+qiniu_prefix = "http://" + qiniu_bucket + ".qiniudn.com/";
 
 qiniu_default_key_prefix = qiniu_config.default_key_prefix || false;
 
@@ -58,9 +58,9 @@ hexo.extend.console.register('qiniu', package_info.description, qiniu_command_op
 " Qiniu tag renders a single link.\n\n Syntax:\n   {% qiniu-img filepath [stylename] [class1,class2,class3] %}\n";
 
 hexo.extend.tag.register('qiniu-img', function(args, content) {
-  var classes, file_path, imgAttr, stype_name;
+  var classes, file_path, imgAttr, style_name;
   file_path = args[0];
-  stype_name = args[1] || false;
+  style_name = args[1] || false;
   classes = args[2] || "";
   imgAttr = {};
   if (!qiniu_config) {
@@ -75,11 +75,10 @@ hexo.extend.tag.register('qiniu-img', function(args, content) {
   classes = classes.split(',');
   classes.push('qiniu');
   classes.push('nofancybox');
-  imgAttr.src = "" + qiniu_default_key_prefix.image + qiniu_prefix + "/" + file_path;
-  if (stylename) {
-    imgAttr.src = "" + imgAttr.src + qiniu_style_seperator + stylename;
+  imgAttr.src = "" + qiniu_prefix + qiniu_default_key_prefix.image + file_path;
+  if (style_name) {
+    imgAttr.src = "" + imgAttr.src + qiniu_style_seperator + style_name;
   }
-  console.log(imgAttr.src);
   imgAttr["class"] = classes.join(' ');
-  return htmlTag('img', imgAttr);
+  return html_tag('img', imgAttr);
 });
