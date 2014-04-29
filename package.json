@@ -33,7 +33,8 @@
         "hexo":"*"
     },
     "dependencies":{
-        "wrench": ">=1.5.4"
+        "wrench": ">=1.5.4",
+        "colors": "*"
     },
     "readmeFilename":"README.md"
 }
