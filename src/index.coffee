@@ -7,6 +7,7 @@ qiniu_config = hexo.config.qiniu || false
 qiniu_bucket = qiniu_config.bucket || false
 qiniu_style_seperator = qiniu_config.style_seperator || '-'
 qiniu_prefix = "#{qiniu_bucket}.qiniudn.com"
+qiniu_default_key_prefix = qiniu_config.default_key_prefix || false
 
 
 """
@@ -64,13 +65,17 @@ hexo.extend.tag.register 'qiniu-img', (args, content)->
     if (!qiniu_bucket)
       throw new Error 'Qiniu buckete wat not sepcified.'
 
+    if (!qiniu_default_key_prefix || ! qiniu_default_key_prefix.image )
+      console.warn("no default key prefix for image")
+
     classes = classes.split(',')
     classes.push('qiniu')
     classes.push('nofancybox')
 
-    imgAttr.src = "#{qiniu_prefix}/#{file_path}"
+    imgAttr.src = "#{qiniu_default_key_prefix.image}#{qiniu_prefix}/#{file_path}"
     if stylename
       imgAttr.src = "#{imgAttr.src}#{qiniu_style_seperator}#{stylename}"
+    console.log(imgAttr.src)
     imgAttr.class = classes.join(' ')
 
     return htmlTag('img', imgAttr)
