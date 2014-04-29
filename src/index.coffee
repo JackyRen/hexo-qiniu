@@ -1,7 +1,7 @@
 html_tag = hexo.util.html_tag
 colors = require('colors')
 package_info = require('./../package.json')
-qiniu_commands = require('./../qiniuCommands')(hexo)
+qiniu_commands = require('./qiniu_commands')(hexo)
 root_path = hexo.config.root
 qiniu_config = hexo.config.qiniu || false
 qiniu_bucket = qiniu_config.bucket || false
@@ -18,7 +18,7 @@ qiniu_default_key_prefix = qiniu_config.default_key_prefix || false
   Syntax:
     $ hexo qiniu [info]
 """
-qiniuCommandOptions =
+qiniu_command_options =
   desc: package_info.description
   usage: '<argument>'
   arguments: [
@@ -26,7 +26,7 @@ qiniuCommandOptions =
     "desc": "Displays useful info, like plugin version, aurthor or GitHub links"
   ]
 
-hexo.extend.console.register 'qiniu', package_info.description,qiniuCommandOptions,(args,callback)->
+hexo.extend.console.register 'qiniu', package_info.description,qiniu_command_options,(args,callback)->
   console.log('\n'.yellow)
   console.log('    __  __                               ____     _             _         '.yellow)
   console.log('   / / / /  ___    _  __  ____          / __ \\   (_)   ____    (_)  __  __'.yellow)
@@ -38,7 +38,7 @@ hexo.extend.console.register 'qiniu', package_info.description,qiniuCommandOptio
 
   opt = args._[0] || null
   switch opt
-    when 'info' then qiniuCommandOptions.showInfo()
+    when 'info' then qiniu_commands.show_info()
     else hexo.call 'help' ,
       _: ['qiniu'],
       callback
