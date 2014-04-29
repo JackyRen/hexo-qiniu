@@ -25,7 +25,9 @@ qiniu:
   bucket: git-repo # change it to your bucket , the default url prefix will be <bucktet>.qiniudn.com
   style_seperator: '-' # this is useful if you setup auto transform of images in qiniu
   default_key_prefix:
-    image: images/ # assume your image's key is images/foo.jpg , you can just type foo.jpg  in the tag , the prefix 'images/' will automatically added
+    image: images/ # assume your image's key is images/foo.jpg , 
+                   # you can just type foo.jpg  in the tag , 
+                   # the prefix 'images/' will automatically added
 
 ```
 
@@ -51,7 +53,7 @@ Will generate the following HTML:
 
 here are some examples
 ```
-{% qiniu-img test.jpg small custom_class1,custom_class2 %}
+{% qiniu-img test.jpg big custom_class1,custom_class2 %}
 ```
 ![](http://git-repo.qiniudn.com/images/test.jpg-big)
 
@@ -60,3 +62,8 @@ here are some examples
 ```
 ![](http://git-repo.qiniudn.com/images/test.jpg-small)
 
+
+##TODO
+  * better support for images
+  * tag for other type of links
+  * uploading file 
