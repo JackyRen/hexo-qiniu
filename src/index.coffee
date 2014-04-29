@@ -1,7 +1,7 @@
 html_tag = hexo.util.html_tag
 colors = require('colors')
-packageInfo = require('./package.json')
-qiniuCommands = require('./qiniuCommands')(hexo)
+packageInfo = require('./../package.json')
+#qiniuCommands = require('./qiniuCommands')(hexo)
 rootPath = hexo.config.root
 qiniuConfig = hexo.config.qiniu || false
 qiniuImageDir = qiniuConfig.image_dir || false
