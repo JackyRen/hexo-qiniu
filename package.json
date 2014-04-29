@@ -1,0 +1,39 @@
+{
+    "name":"hexo-qiniu",
+    "version": "0.0.1",
+    "description": "Use Qiniu links in your blog posts! :)",
+    "main": "./bin/index",
+    "repository":{
+        "type":"git",
+        "url":"https://github.com/JackyRen/hexo-qiniu.git"
+    },
+    "author":{
+        "name": "Jacky Ren",
+        "email": "rjjacky@gmail.com",
+        "url": "http://www.rjjacky.info/"
+    },
+    "keywords":[
+        "website",
+        "blog",
+        "hexo",
+        "image",
+        "embed",
+        "qiniu"
+    ],
+    "licenses":[
+        {
+            "type":"GPLv3", 
+            "url":"https://raw.githubusercontent.com/JackyRen/hexo-qiniu/master/LICENSE"
+        }
+    ],
+    "bugs":{
+        "url":"https://github.com/JackyRen/hexo-qiniu/issues"
+    },
+    "engines":{
+        "hexo":"*"
+    },
+    "dependencies":{
+        "wrench": ">=1.5.4"
+    },
+    "readmeFilename":"README.md"
+}
